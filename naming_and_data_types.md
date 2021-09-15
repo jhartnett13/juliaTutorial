@@ -14,4 +14,10 @@ Julia is a dynamically typed language, which means that data types are not known
 After some testing, I believe that Julia is weakly typed. In the REPL I typed x = 5 and followed it with x = "hi", and it allowed me to do both so I believe that Julia is weakly typed.
 
 
+## Converting Types
 
+If I try to run the expression x = "5" + 6, I get an error that says MethodError: no method matching +(::String, ::Int64). To get around this, I wrote some code that takes "5" assigned to a variable, converts it from a string to an int using parse(), and then adds the numbers together. This kind of conversion is something that would be best to write a function for. It is fairly easy to convert between types in Julia. To write an int in a string, I used string(variable) to convert the int to a string that could then be concatenated to a string. Julia allows arrays and dictionaries to be heterogeneous, storing different types of values. I have not come across any limitations related to conversions. 
+
+-- built in complex data types
+
+Julia supports widening conversions when performing operations between values of different types. According to the documentation, Julia supports promoting to a common type during math operations like a language like Python would do when (https://docs.julialang.org/en/v1/manual/conversion-and-promotion/). When adding an int and a float I got back a float, and the same was true when dividing an int by a float. I could not add two string together. I got an error LoadError: MethodError: no method matching +(::String, ::String) when trying. 
