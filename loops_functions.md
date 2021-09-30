@@ -33,6 +33,8 @@ test("hi", 2)
 
 (https://docs.julialang.org/en/v1/manual/functions/)
 
+Function arguments in Julia are "pass-by-sharing", and the values are not copied when they are passed between functions. Any changes made to values of mutable data types will remain outside the function. (https://docs.julialang.org/en/v1/manual/functions/#Argument-Passing-Behavior)
+
 ### Return Statements
 
 By default, functions in Julia return the value of the last expression evalulated without a ```return``` statement being needed. ```return``` is not always needed for simple functions, so this is a useful feature in Julia. However, there are many other situations where someone may want to specify where to have a return statement or what to return. In these cases, all that is needed is the kewword ```return```. (https://docs.julialang.org/en/v1/manual/functions/#The-return-Keyword)
@@ -49,24 +51,25 @@ Since a function automatically returns the last expression evaluated, it has to 
 
 It is possible to simulate returning multiple values from a function in Julia  by returning a tuple of values. This tuple is able to be broken into individual arguments by creating them in the assignment statement, so it is not too different from how Python would return multiple values. (https://docs.julialang.org/en/v1/manual/functions/#Multiple-Return-Values)
 
-
 ### Recursion
 
+Julia supports recursive functions. I couldn't find documentation on this, but I created a function to calculate a factorial and it worked. The code is below. 
+
+```
+function fac(x)
+    if x == 1
+        return x
+    else
+        return x*fac(x-1)
+    end
+end
+```
+
+### Variable Functions
+
+Something I came across in the documentation that seems really interesting is that it is possible to write functions without knowing exactly what will be passed into them. There are 'varargs' functions that can take in a varying number of arguments, and it is possible to have optional arguments in functions. These seem like features that could be useful, especially since Julia is good for data science and statistics and it might be possible to have different features for different data points. I didn't do too much of a deep dive into the syntax of these functions, but it's good to note that they are there. The doucmentation is linked below. 
+
+varargs: https://docs.julialang.org/en/v1/manual/functions/#Varargs-Functions
+optional arguments: https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments
 
 
-
-
-### pass by reference or pass by value
-
-### anything else that's important
-
-
-3. Are there any rules about where the function has to be placed in your code file so that it can
-run?
-4. Does your language support recursive functions?
-
-
-7. Is your language pass-by reference or value? Check your code against outside sources in case
-there is anything tricky going on (like in Perl).
-8. Are there any other aspects of functions in your language that aren't specifically asked about
-here, but that are important to know in order to write one? What are they?
